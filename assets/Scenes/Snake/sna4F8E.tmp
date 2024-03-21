@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmjpewms6sasv"]
+
+[ext_resource type="Script" path="res://assets/Scenes/Snake/Head.gd" id="1_0j4yg"]
+[ext_resource type="Script" path="res://assets/Scenes/Snake/snake.gd" id="1_vigio"]
+[ext_resource type="SpriteFrames" uid="uid://ds1wwh8ifoa77" path="res://assets/sprites/snake_head_anim.tres" id="2_gcgua"]
+[ext_resource type="SpriteFrames" uid="uid://g7rwkpu6eee3" path="res://assets/sprites/snake_tail_anim.tres" id="4_2t4tl"]
+[ext_resource type="PackedScene" uid="uid://bfs1ttxw41636" path="res://assets/Scenes/Snake/body.tscn" id="4_4uyry"]
+[ext_resource type="Script" path="res://assets/Scenes/Snake/Tail.gd" id="4_x7vnm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0ytq"]
+size = Vector2(60, 62)
+
+[node name="Snake" type="CharacterBody2D"]
+script = ExtResource("1_vigio")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Head" type="CharacterBody2D" parent="." groups=["Snake", "SnakeHead"]]
+script = ExtResource("1_0j4yg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource("RectangleShape2D_y0ytq")
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="Head"]
+sprite_frames = ExtResource("2_gcgua")
+animation = &"MoveRight"
+
+[node name="Body" parent="." instance=ExtResource("4_4uyry")]
+position = Vector2(-64, 0)
+
+[node name="Tail" type="CharacterBody2D" parent="."]
+script = ExtResource("4_x7vnm")
+
+[node name="TailSprite" type="AnimatedSprite2D" parent="Tail"]
+position = Vector2(-128, 0)
+sprite_frames = ExtResource("4_2t4tl")
+animation = &"PointLeft"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

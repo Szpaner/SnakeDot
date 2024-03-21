@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmjpewms6sasv"]
+
+[ext_resource type="Script" path="res://assets/Scenes/Snake/Head.gd" id="1_0j4yg"]
+[ext_resource type="Script" path="res://assets/Scenes/Snake/snake.gd" id="1_vigio"]
+[ext_resource type="SpriteFrames" uid="uid://ds1wwh8ifoa77" path="res://assets/sprites/snake_head_anim.tres" id="2_gcgua"]
+[ext_resource type="SpriteFrames" uid="uid://g7rwkpu6eee3" path="res://assets/sprites/snake_tail_anim.tres" id="4_2t4tl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0ytq"]
+size = Vector2(60, 62)
+
+[node name="Snake" type="Node2D"]
+script = ExtResource("1_vigio")
+
+[node name="Head" type="CharacterBody2D" parent="." groups=["Snake", "SnakeHead"]]
+script = ExtResource("1_0j4yg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource("RectangleShape2D_y0ytq")
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="Head"]
+sprite_frames = ExtResource("2_gcgua")
+animation = &"MoveRight"
+
+[node name="Tail" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tail"]
+position = Vector2(-64, 0)
+sprite_frames = ExtResource("4_2t4tl")
+animation = &"PointLeft"

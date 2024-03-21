@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmjpewms6sasv"]
+
+[ext_resource type="Script" path="res://assets/Scenes/Snake/Head.gd" id="1_0j4yg"]
+[ext_resource type="Script" path="res://assets/Scenes/Snake/snake.gd" id="1_vigio"]
+[ext_resource type="SpriteFrames" uid="uid://ds1wwh8ifoa77" path="res://assets/sprites/snake_head_anim.tres" id="2_gcgua"]
+[ext_resource type="SpriteFrames" uid="uid://g7rwkpu6eee3" path="res://assets/sprites/snake_tail_anim.tres" id="4_2t4tl"]
+[ext_resource type="PackedScene" uid="uid://bfs1ttxw41636" path="res://assets/Scenes/Snake/body.tscn" id="4_4uyry"]
+[ext_resource type="Script" path="res://assets/Scenes/Snake/Tail.gd" id="4_x7vnm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxvss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o68ru"]
+size = Vector2(62, 62)
+
+[node name="SnakeMain" type="Node2D"]
+script = ExtResource("1_vigio")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Head" type="CharacterBody2D" parent="." groups=["Snake", "SnakeHead"]]
+process_priority = 1
+process_physics_priority = 1
+script = ExtResource("1_0j4yg")
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="Head"]
+sprite_frames = ExtResource("2_gcgua")
+animation = &"MoveRight"
+
+[node name="HeadCol" type="CollisionShape2D" parent="Head"]
+process_priority = 1
+process_physics_priority = 1
+shape = SubResource("RectangleShape2D_kxvss")
+
+[node name="Body" parent="." instance=ExtResource("4_4uyry")]
+position = Vector2(-64, 0)
+
+[node name="Tail" type="Area2D" parent="." groups=["SnakePart"]]
+process_priority = 2
+process_physics_priority = 2
+position = Vector2(-128, 0)
+script = ExtResource("4_x7vnm")
+
+[node name="TailCol" type="CollisionShape2D" parent="Tail"]
+process_priority = 2
+process_physics_priority = 2
+shape = SubResource("RectangleShape2D_o68ru")
+
+[node name="TailSprite" type="AnimatedSprite2D" parent="Tail"]
+sprite_frames = ExtResource("4_2t4tl")
+animation = &"PointLeft"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Tail" to="Tail" method="_on_body_entered"]

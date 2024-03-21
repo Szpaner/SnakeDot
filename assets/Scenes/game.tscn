@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ktehcofhfiso"]
+
+[ext_resource type="PackedScene" uid="uid://d1r2kd1pori6" path="res://assets/Scenes/pickups/apple.tscn" id="1_6afn7"]
+[ext_resource type="PackedScene" uid="uid://bmjpewms6sasv" path="res://assets/Scenes/Snake/snake.tscn" id="1_bk2a6"]
+[ext_resource type="Script" path="res://assets/Scenes/gameManager.gd" id="1_vynoe"]
+[ext_resource type="PackedScene" uid="uid://dqkbbo3vokd10" path="res://assets/Scenes/UI/ui.tscn" id="2_mx0ra"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_vynoe")
+
+[node name="UICanvas" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UICanvas" instance=ExtResource("2_mx0ra")]
+
+[node name="Apple" parent="." instance=ExtResource("1_6afn7")]
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="Snake" parent="." instance=ExtResource("1_bk2a6")]
