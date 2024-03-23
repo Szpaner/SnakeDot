@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1r2kd1pori6" path="res://assets/Scenes/pickups/apple.tscn" id="1_6afn7"]
 [ext_resource type="PackedScene" uid="uid://bmjpewms6sasv" path="res://assets/Scenes/Snake/snake.tscn" id="1_bk2a6"]
-[ext_resource type="Script" path="res://assets/Scenes/gameManager.gd" id="1_vynoe"]
+[ext_resource type="Script" path="res://assets/Scenes/Game/gameManager.gd" id="1_vynoe"]
 [ext_resource type="PackedScene" uid="uid://dqkbbo3vokd10" path="res://assets/Scenes/UI/ui.tscn" id="2_mx0ra"]
 
 [node name="Game" type="Node2D"]

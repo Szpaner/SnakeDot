@@ -1,0 +1,157 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt70irply2xlo"]
+
+[ext_resource type="Script" path="res://assets/Scenes/Menu/Options/options.gd" id="1_vnryg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ksu7r"]
+font_size = 26
+
+[sub_resource type="Theme" id="Theme_5xtqs"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vnryg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 216.0
+offset_right = 488.0
+offset_bottom = 419.0
+
+[node name="LPanel" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="HBoxContainer/LPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Controls
+
+"
+label_settings = SubResource("LabelSettings_ksu7r")
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/LPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="UpLabel" type="Label" parent="HBoxContainer/LPanel/GridContainer"]
+layout_mode = 2
+text = "Up
+"
+
+[node name="UpButton" type="Button" parent="HBoxContainer/LPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+text = "Up Arrow"
+
+[node name="DownLabel" type="Label" parent="HBoxContainer/LPanel/GridContainer"]
+layout_mode = 2
+text = "Down"
+
+[node name="DownButton" type="Button" parent="HBoxContainer/LPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+text = "Down Arrow"
+
+[node name="LeftLabel" type="Label" parent="HBoxContainer/LPanel/GridContainer"]
+layout_mode = 2
+text = "Left
+"
+
+[node name="LeftButton" type="Button" parent="HBoxContainer/LPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+text = "Left Arrow"
+
+[node name="RightLabel" type="Label" parent="HBoxContainer/LPanel/GridContainer"]
+layout_mode = 2
+text = "Right
+"
+
+[node name="RightButton" type="Button" parent="HBoxContainer/LPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+text = "Right Arrow"
+
+[node name="MenuLabel" type="Label" parent="HBoxContainer/LPanel/GridContainer"]
+layout_mode = 2
+text = "Menu
+"
+
+[node name="MenuButton" type="Button" parent="HBoxContainer/LPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+text = "Esc"
+
+[node name="RightContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="RebindContainer" type="BoxContainer" parent="."]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.5
+offset_top = -245.0
+offset_right = 375.5
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5xtqs")
+vertical = true
+
+[node name="RebindPanel" type="Panel" parent="RebindContainer"]
+self_modulate = Color(0, 0.0235294, 1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestionPanel" type="Label" parent="RebindContainer/RebindPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 155.0
+offset_right = 117.0
+offset_bottom = 178.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Please provide new input for "
+horizontal_alignment = 1
+
+[node name="InputName" type="Label" parent="RebindContainer/RebindPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 218.0
+offset_right = 120.0
+offset_bottom = 241.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+horizontal_alignment = 1
+
+[connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/UpButton" to="." method="_on_up_button_toggled"]
+[connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/DownButton" to="." method="_on_down_button_toggled"]
+[connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/LeftButton" to="." method="_on_left_button_toggled"]
+[connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/RightButton" to="." method="_on_right_button_toggled"]
+[connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/MenuButton" to="." method="_on_menu_button_toggled"]
