@@ -34,10 +34,12 @@ func _ready():
 		
 	timer.start();
 
+
 func _process(delta):
 	#inputs
 	#vel = Vector2()
-	
+	if Input.is_action_pressed("menu"):
+		pass #TODO
 	if Input.is_action_pressed("move_up") and vel[0].y == 0:
 		lastActionPressed = "move_up"
 	elif Input.is_action_pressed("move_down") and vel[0].y == 0:
@@ -46,6 +48,7 @@ func _process(delta):
 		lastActionPressed = "move_left"
 	if Input.is_action_pressed("move_right") and vel[0].x == 0:
 		lastActionPressed = "move_right"
+		
 	
 	currentDelay -= delta
 	if currentDelay <= 0:

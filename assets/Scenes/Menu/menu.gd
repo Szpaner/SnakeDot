@@ -1,9 +1,12 @@
 extends Control
 
 
+@onready var gameMenu : VBoxContainer = $GameMenu
+@onready var options : Control = $Options
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$VBoxContainer/Start.grab_focus()
+	$GameMenu/StartButton.grab_focus()
 
 
 
@@ -12,8 +15,14 @@ func _on_start_pressed():
 
 
 func _on_options_pressed():
-	pass # Replace with function body.
+	gameMenu.hide()
+	options.show()
 
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_options_2_closed_options():
+	options.hide()
+	gameMenu.show()

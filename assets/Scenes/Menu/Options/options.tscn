@@ -17,11 +17,18 @@ grow_vertical = 2
 script = ExtResource("1_vnryg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 323.0
-offset_top = 216.0
-offset_right = 488.0
-offset_bottom = 419.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -137.0
+offset_right = 109.5
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="LPanel" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -150,8 +157,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 horizontal_alignment = 1
 
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -60.0
+offset_right = 93.0
+offset_bottom = -29.0
+grow_vertical = 0
+text = "Return"
+
 [connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/UpButton" to="." method="_on_up_button_toggled"]
 [connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/DownButton" to="." method="_on_down_button_toggled"]
 [connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/LeftButton" to="." method="_on_left_button_toggled"]
 [connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/RightButton" to="." method="_on_right_button_toggled"]
 [connection signal="toggled" from="HBoxContainer/LPanel/GridContainer/MenuButton" to="." method="_on_menu_button_toggled"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_button_pressed"]

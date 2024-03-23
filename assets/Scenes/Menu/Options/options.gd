@@ -1,5 +1,7 @@
 extends Control
 
+signal closed_options
+
 const INPUT_ACTIONS = [ "move_up", "move_down", "move_left", "move_right", "menu" ]
 const CONFIG_FILE = "user://config.cfg"
 
@@ -16,14 +18,15 @@ var curBtn : Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_process_unhandled_input(false)
 	pass # Replace with function body.
 
 func _process(delta):
 	pass
 	
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventKey:
-		set_process_input(false)
+		set_process_unhandled_input(false)
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, event)
 		rebindCont.visible = false
@@ -35,7 +38,7 @@ func _on_up_button_toggled(toggled_on):
 	rebindCont.visible = true
 	action = "move_up"
 	curBtn = upBtn
-	set_process_input(true)
+	set_process_unhandled_input(true)
 
 
 func _on_down_button_toggled(toggled_on):
@@ -68,3 +71,7 @@ func _on_menu_button_toggled(toggled_on):
 	action = "menu"
 	curBtn = menuBtn
 	set_process_input(true)
+
+
+func _on_button_pressed():
+	closed_options.emit()
