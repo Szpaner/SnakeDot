@@ -38,8 +38,7 @@ func _ready():
 func _process(delta):
 	#inputs
 	#vel = Vector2()
-	if Input.is_action_pressed("menu"):
-		pass #TODO
+
 	if Input.is_action_pressed("move_up") and vel[0].y == 0:
 		lastActionPressed = "move_up"
 	elif Input.is_action_pressed("move_down") and vel[0].y == 0:
@@ -61,11 +60,11 @@ func _on_timer_timeout():
 func handleMovement():
 	var nextVel : Vector2 = Vector2()
 	if lastActionPressed == "move_up":
-		nextVel.y = 1
+		nextVel.y = -1
 		nextVel.x = 0
 		facingDir = Vector2(0,-1)
 	if lastActionPressed == "move_down":
-		nextVel.y = -1
+		nextVel.y = 1
 		nextVel.x = 0
 		facingDir = Vector2(0,1)
 	if lastActionPressed == "move_left":

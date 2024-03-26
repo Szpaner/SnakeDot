@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwcuoecebgry6"]
+[gd_scene load_steps=3 format=3 uid="uid://bpoidem61rmn"]
 
-[ext_resource type="Script" path="res://assets/Scenes/Menu/menu.gd" id="1_5q4ix"]
-[ext_resource type="PackedScene" uid="uid://dt70irply2xlo" path="res://assets/Scenes/Menu/Options/options.tscn" id="2_ccosc"]
+[ext_resource type="Script" path="res://assets/Scenes/Menu/PauseMenu/pauseMenu.gd" id="1_d4a1l"]
+[ext_resource type="PackedScene" uid="uid://dt70irply2xlo" path="res://assets/Scenes/Menu/Options/options.tscn" id="2_xwxko"]
 
-[node name="Menu" type="Control"]
+[node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5q4ix")
+script = ExtResource("1_d4a1l")
 
 [node name="GameMenu" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -23,15 +23,15 @@ offset_right = 183.0
 offset_bottom = -24.0
 grow_vertical = 0
 
-[node name="StartButton" type="Button" parent="GameMenu"]
+[node name="ResumeButton" type="Button" parent="GameMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
-text = "Start"
+text = "Resume"
 
 [node name="OptionsButton" type="Button" parent="GameMenu"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Options"
 
@@ -39,14 +39,15 @@ text = "Options"
 layout_mode = 2
 size_flags_vertical = 8
 focus_neighbor_top = NodePath("../OptionsButton")
-focus_neighbor_bottom = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
 text = "Quit"
 
-[node name="Options" parent="." instance=ExtResource("2_ccosc")]
+[node name="Options" parent="." instance=ExtResource("2_xwxko")]
+process_mode = 2
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="GameMenu/StartButton" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="GameMenu/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="GameMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="GameMenu/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="GameMenu/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="closed_options" from="Options" to="." method="_on_options_2_closed_options"]

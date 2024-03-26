@@ -19,7 +19,6 @@ var curBtn : Button
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process_unhandled_input(false)
-	pass # Replace with function body.
 
 func _process(delta):
 	pass
@@ -46,7 +45,7 @@ func _on_down_button_toggled(toggled_on):
 	rebindCont.visible = true
 	action = "move_down"
 	curBtn = downBtn
-	set_process_input(true)
+	set_process_unhandled_input(true)
 
 
 func _on_left_button_toggled(toggled_on):
@@ -54,7 +53,7 @@ func _on_left_button_toggled(toggled_on):
 	rebindCont.visible = true
 	action = "move_left"
 	curBtn = leftBtn
-	set_process_input(true)
+	set_process_unhandled_input(true)
 
 
 func _on_right_button_toggled(toggled_on):
@@ -62,7 +61,7 @@ func _on_right_button_toggled(toggled_on):
 	rebindCont.visible = true
 	action = "move_right"
 	curBtn = rightBtn
-	set_process_input(true)
+	set_process_unhandled_input(true)
 
 
 func _on_menu_button_toggled(toggled_on):
@@ -70,7 +69,7 @@ func _on_menu_button_toggled(toggled_on):
 	rebindCont.visible = true
 	action = "menu"
 	curBtn = menuBtn
-	set_process_input(true)
+	set_process_unhandled_input(true)
 
 
 func _on_button_pressed():

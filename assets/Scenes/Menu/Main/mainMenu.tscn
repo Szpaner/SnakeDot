@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwcuoecebgry6"]
+
+[ext_resource type="Script" path="res://assets/Scenes/Menu/Main/mainMenu.gd" id="1_dff84"]
+[ext_resource type="PackedScene" uid="uid://dt70irply2xlo" path="res://assets/Scenes/Menu/Options/options.tscn" id="2_wsvdl"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dff84")
+
+[node name="GameMenu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -127.0
+offset_right = 183.0
+offset_bottom = -24.0
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="GameMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="GameMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="GameMenu"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+text = "Quit"
+
+[node name="Options" parent="." instance=ExtResource("2_wsvdl")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="GameMenu/StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="GameMenu/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="GameMenu/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="closed_options" from="Options" to="." method="_on_options_2_closed_options"]

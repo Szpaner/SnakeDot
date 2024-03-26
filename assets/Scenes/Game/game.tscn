@@ -8,12 +8,12 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vynoe")
 
-[node name="UICanvas" type="CanvasLayer" parent="."]
-
-[node name="UI" parent="UICanvas" instance=ExtResource("2_mx0ra")]
-
 [node name="Apple" parent="." instance=ExtResource("1_6afn7")]
 
 [node name="Camera" type="Camera2D" parent="."]
+
+[node name="UICanvas" type="CanvasLayer" parent="Camera"]
+
+[node name="UI" parent="Camera/UICanvas" instance=ExtResource("2_mx0ra")]
 
 [node name="Snake" parent="." instance=ExtResource("1_bk2a6")]
