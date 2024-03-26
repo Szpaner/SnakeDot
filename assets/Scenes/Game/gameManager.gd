@@ -44,11 +44,11 @@ func updateGrid(v: Vector2, o: Object) :
 
 func pauseMenu():
 	var pause_menu_proto = load("res://assets/Scenes/Menu/PauseMenu/pauseMenu.tscn")
-	pause_menu = pause_menu_proto.instantiate() as Control
+	pause_menu = pause_menu_proto.instantiate()
 	pause_menu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	pause_menu.set_name("PauseMenu")
-	UICanvas.add_child(pause_menu)
 	pause_menu.resume_game.connect(_on_pause_menu_resume_game)
+	UICanvas.add_child(pause_menu)
 	get_tree().paused = true
 	isPaused = true
 
